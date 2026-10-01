@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Task Management Application</title>
+
+    <link rel="stylesheet"
+        href="style.css">
+    
+
+</head>
+
+<body>
+
+<!-- LOGIN / REGISTER -->
+
+<div id="authPage">
+
+    <div class="auth-box">
+
+        <h1>✓ TaskFlow</h1>
+
+        <p>Manage your tasks easily</p>
+
+        <div class="tabs">
+
+            <button id="loginTab">
+                Login
+            </button>
+
+            <button id="registerTab">
+                Register
+            </button>
+
+        </div>
+
+
+        <form id="authForm">
+
+            <input
+                id="name"
+                type="text"
+                placeholder="Enter your name"
+                class="hidden"
+            >
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Enter email"
+                required
+            >
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button
+                type="submit"
+                id="authButton">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN APPLICATION -->
+
+<div id="appPage" class="hidden">
+
+    <header>
+
+        <div>
+
+            <h2>✓ TaskFlow</h2>
+
+            <p id="welcome">
+                Welcome
+            </p>
+
+        </div>
+
+        <button id="logoutBtn">
+            Logout
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <div class="top">
+
+            <div>
+
+                <h1>My Tasks</h1>
+
+                <p>
+                    Create, update and track your tasks.
+                </p>
+
+            </div>
+
+            <button id="addTaskBtn">
+                + Add Task
+            </button>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+            <div>
+                <span>Total Tasks</span>
+                <h2 id="totalCount">0</h2>
+            </div>
+
+            <div>
+                <span>Pending</span>
+                <h2 id="pendingCount">0</h2>
+            </div>
+
+            <div>
+                <span>In Progress</span>
+                <h2 id="progressCount">0</h2>
+            </div>
+
+            <div>
+                <span>Completed</span>
+                <h2 id="completedCount">0</h2>
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="search">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search tasks..."
+            >
+
+            <select id="filterStatus">
+
+                <option value="All">
+                    All Status
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="In Progress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- TASKS -->
+
+        <div id="taskList"></div>
+
+    </main>
+
+</div>
+
+
+<!-- TASK MODAL -->
+
+<div id="taskModal" class="modal hidden">
+
+    <div class="modal-box">
+
+        <h2 id="modalTitle">
+            Add Task
+        </h2>
+
+        <form id="taskForm">
+
+            <input
+                id="taskId"
+                type="hidden"
+            >
+
+            <label>Task Title</label>
+
+            <input
+                id="taskTitle"
+                type="text"
+                placeholder="Enter task title"
+                required
+            >
+
+
+            <label>Description</label>
+
+            <textarea
+                id="taskDescription"
+                placeholder="Enter description">
+            </textarea>
+
+
+            <label>Status</label>
+
+            <select id="taskStatus">
+
+                <option>Pending</option>
+
+                <option>In Progress</option>
+
+                <option>Completed</option>
+
+            </select>
+
+
+            <label>Due Date</label>
+
+            <input
+                id="taskDueDate"
+                type="date"
+            >
+
+
+            <div class="modal-buttons">
+
+                <button
+                    type="button"
+                    id="cancelBtn">
+                    Cancel
+                </button>
+
+                <button type="submit">
+                    Save Task
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
