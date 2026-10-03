@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Checkout</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+    <h2>ShopEasy</h2>
+
+    <a href="cart.html">Back to Cart</a>
+
+</nav>
+
+
+<div class="form-container">
+
+    <h1>Checkout</h1>
+
+    <h2>
+        Total: ₹<span id="total"></span>
+    </h2>
+
+
+    <form id="checkoutForm">
+
+        <textarea
+            id="address"
+            placeholder="Enter delivery address"
+            required>
+        </textarea>
+
+
+        <button type="submit">
+            Place Order
+        </button>
+
+    </form>
+
+</div>
+
+
+<script>
+
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+
+
+cart.forEach(item => {
+
+    total +=
+        item.product.price *
+        item.quantity;
+
+});
+
+
+document.getElementById("total")
+.innerText = total;
+
+
+document
+.getElementById("checkoutForm")
+.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+
+    const address =
+        document.getElementById("address").value;
+
+
+    const token =
+        localStorage.getItem("token");
+
+
+    const products =
+        cart.map(item => ({
+
+            product: item.product._id,
+
+            quantity: item.quantity
+
+        }));
+
+
+    const response =
+        await fetch("/api/orders", {
+
+            method: "POST",
+
+            headers: {
+
+                "Content-Type":
+                    "application/json",
+
+                "Authorization":
+                    "Bearer " + token
+
+            },
+
+            body: JSON.stringify({
+
+                products,
+                total,
+                address
+
+            })
+
+        });
+
+
+    const data =
+        await response.json();
+
+
+    alert(data.message);
+
+
+    if (response.ok) {
+
+        localStorage.removeItem("cart");
+
+        window.location.href =
+            "orders.html";
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
