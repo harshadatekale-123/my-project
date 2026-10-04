@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Post</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Create Blog Post</h1>
+
+    <form id="postForm">
+
+        <input
+            type="text"
+            id="title"
+            placeholder="Post title"
+            required
+        >
+
+        <textarea
+            id="content"
+            placeholder="Write your blog..."
+            required
+        ></textarea>
+
+        <button type="submit">
+            Create Post
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <a href="index.html">Back to Home</a>
+
+</div>
+
+<script src="js/create-post.js"></script>
+
+</body>
+</html>
